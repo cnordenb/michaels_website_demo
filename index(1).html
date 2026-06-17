@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Valo — A lakeside apartment in Joensuu</title>
+<meta name="description" content="A bright two-room apartment by the water in Joensuu, North Karelia. Sauna, fast Wi-Fi, and the long Nordic light. Get in touch to book your stay." />
+
+<!-- ============================================================
+     EDIT ME: Replace the title, description, and all text marked
+     with [EDIT] comments below with your own apartment's details.
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#ECEEEC;
+    --paper:#F6F7F5;
+    --ink:#16211C;
+    --ink-soft:#3D4A44;
+    --moss:#5C7A73;
+    --line:#D4DAD4;
+    --sun:#D98A45;
+    --sun-deep:#B8692C;
+
+    --display:"Newsreader", Georgia, serif;
+    --body:"Hanken Grotesk", system-ui, sans-serif;
+
+    --maxw:1180px;
+    --pad:clamp(20px,5vw,64px);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+
+  .eyebrow{
+    font-size:.74rem;
+    text-transform:uppercase;
+    letter-spacing:.22em;
+    font-weight:600;
+    color:var(--moss);
+  }
+
+  /* The signature: a thin glowing horizon line, the apartment's "Nordic light" motif */
+  .horizon{
+    height:2px;border:0;
+    background:linear-gradient(90deg, transparent, var(--sun) 18%, var(--sun-deep) 50%, var(--sun) 82%, transparent);
+    opacity:.9;
+    box-shadow:0 0 16px rgba(217,138,69,.45);
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:saturate(1.2) blur(8px);
+    background:color-mix(in srgb, var(--bg) 82%, transparent);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    height:68px;
+  }
+  .brand{
+    font-family:var(--display);
+    font-size:1.5rem;
+    letter-spacing:.01em;
+    display:flex;align-items:baseline;gap:.5ch;
+  }
+  .brand span{
+    font-family:var(--body);
+    font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;
+    color:var(--moss);font-weight:600;
+  }
+  .nav-links{display:flex;align-items:center;gap:clamp(14px,2.4vw,34px)}
+  .nav-links a.link{
+    font-size:.92rem;font-weight:500;color:var(--ink-soft);
+    transition:color .2s;
+  }
+  .nav-links a.link:hover{color:var(--ink)}
+  .btn{
+    display:inline-flex;align-items:center;gap:.55ch;
+    background:var(--ink);color:var(--bg);
+    font-weight:600;font-size:.92rem;
+    padding:.62em 1.15em;border-radius:999px;
+    border:1px solid var(--ink);
+    transition:transform .18s ease, background .2s;
+    cursor:pointer;
+  }
+  .btn:hover{transform:translateY(-1px);background:#0e1813}
+  .btn.sun{background:var(--sun);border-color:var(--sun);color:#1b1206}
+  .btn.sun:hover{background:var(--sun-deep);border-color:var(--sun-deep)}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.ghost:hover{background:transparent;border-color:var(--moss);color:var(--moss)}
+  .nav-links a.nav-cta{display:none}
+  @media(min-width:620px){ .nav-links a.nav-cta{display:inline-flex} }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
+    border-bottom:1px solid var(--line);
+  }
+  @media(min-width:900px){
+    .hero{grid-template-columns:0.92fr 1.08fr; min-height:calc(100vh - 68px)}
+  }
+  .hero-text{
+    padding:clamp(40px,7vw,90px) var(--pad) clamp(40px,6vw,70px);
+    display:flex;flex-direction:column;justify-content:center;
+    max-width:640px;margin-left:auto;
+    width:100%;
+  }
+  @media(min-width:900px){ .hero-text{padding-right:clamp(30px,4vw,60px)} }
+  .hero h1{
+    font-family:var(--display);
+    font-weight:300;
+    font-size:clamp(2.7rem,6.4vw,5rem);
+    line-height:1.02;
+    letter-spacing:-.015em;
+    margin:.32em 0 .5em;
+  }
+  .hero h1 em{font-style:italic;color:var(--moss)}
+  .hero-lede{
+    font-size:clamp(1.05rem,1.4vw,1.22rem);
+    color:var(--ink-soft);
+    max-width:46ch;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:2.1rem}
+  .facts{
+    display:flex;flex-wrap:wrap;gap:0 clamp(18px,2.4vw,30px);
+    margin-top:2.4rem;padding-top:1.6rem;
+    border-top:1px solid var(--line);
+  }
+  .fact{display:flex;flex-direction:column;padding:4px 0}
+  .fact b{font-family:var(--display);font-weight:400;font-size:1.5rem;line-height:1}
+  .fact small{font-size:.72rem;text-transform:uppercase;letter-spacing:.13em;color:var(--moss);margin-top:.45em;font-weight:600}
+
+  /* Image placeholder — REPLACE the .ph divs with <img> tags */
+  .hero-media{position:relative;min-height:340px}
+  .ph{
+    position:relative;width:100%;height:100%;
+    background:
+      radial-gradient(120% 90% at 70% 18%, #f3d9b0 0%, transparent 45%),
+      linear-gradient(190deg, #aebfc4 0%, #6f8a8c 38%, #2f4a45 100%);
+    overflow:hidden;
+  }
+  .ph::after{
+    content:"[ Replace with your photo ]";
+    position:absolute;left:50%;bottom:14px;transform:translateX(-50%);
+    font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+    color:rgba(255,255,255,.78);background:rgba(0,0,0,.28);
+    padding:.4em .8em;border-radius:999px;font-weight:600;white-space:nowrap;
+  }
+  .hero-media .ph::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(60% 40% at 72% 22%, rgba(255,230,190,.55), transparent 60%);
+    mix-blend-mode:screen;
+  }
+
+  /* ---------- Section scaffolding ---------- */
+  section{padding:clamp(56px,9vw,120px) 0}
+  .section-head{max-width:60ch;margin-bottom:clamp(34px,5vw,56px)}
+  .section-head h2{
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.08;
+    letter-spacing:-.01em;margin-top:.5rem;
+  }
+  .section-head p{color:var(--ink-soft);margin-top:1rem;font-size:1.08rem}
+
+  /* ---------- Gallery ---------- */
+  #gallery{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .gallery-grid{
+    display:grid;gap:14px;
+    grid-template-columns:repeat(2,1fr);
+    grid-auto-rows:minmax(150px,1fr);
+  }
+  @media(min-width:760px){
+    .gallery-grid{grid-template-columns:repeat(4,1fr);grid-auto-rows:200px}
+    .g-tall{grid-row:span 2}
+    .g-wide{grid-column:span 2}
+  }
+  .gallery-grid figure{position:relative;overflow:hidden;border-radius:6px;background:#ccc}
+  .gallery-grid .ph{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .gallery-grid figure:hover .ph{transform:scale(1.04)}
+  .g2 .ph{background:linear-gradient(200deg,#d8c4a6,#8a6f4e 90%)}
+  .g3 .ph{background:linear-gradient(160deg,#bcd0cf,#4a6b66 90%)}
+  .g4 .ph{background:linear-gradient(220deg,#e6dcc8,#9aa68f 90%)}
+  .g5 .ph{background:linear-gradient(180deg,#c3ccd4,#3f5560 90%)}
+
+  /* ---------- The space (two columns) ---------- */
+  .space-grid{display:grid;gap:clamp(28px,5vw,64px);grid-template-columns:1fr}
+  @media(min-width:860px){.space-grid{grid-template-columns:1.15fr .85fr}}
+  .space-copy p{margin-bottom:1.1em;color:var(--ink-soft)}
+  .space-copy p:first-child{font-size:1.18rem;color:var(--ink)}
+  .pull{
+    background:var(--paper);border:1px solid var(--line);border-radius:10px;
+    padding:clamp(24px,3vw,34px);
+  }
+  .pull h3{font-family:var(--display);font-weight:400;font-size:1.3rem;margin-bottom:.2rem}
+  .pull .price{font-family:var(--display);font-size:2.4rem;font-weight:400;line-height:1;margin:.4rem 0 .1rem}
+  .pull .price small{font-size:.85rem;font-family:var(--body);color:var(--moss);font-weight:600}
+  .pull ul{list-style:none;margin-top:1.2rem;border-top:1px solid var(--line)}
+  .pull li{display:flex;justify-content:space-between;padding:.7em 0;border-bottom:1px solid var(--line);font-size:.95rem}
+  .pull li span:last-child{color:var(--ink-soft)}
+  .pull .btn{width:100%;justify-content:center;margin-top:1.4rem}
+
+  /* ---------- Amenities ---------- */
+  #amenities{background:var(--ink);color:var(--bg)}
+  #amenities .eyebrow{color:var(--sun)}
+  #amenities .section-head h2{color:var(--bg)}
+  .amen-grid{
+    display:grid;gap:1px;background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.12);border-radius:8px;overflow:hidden;
+    grid-template-columns:repeat(2,1fr);
+  }
+  @media(min-width:720px){.amen-grid{grid-template-columns:repeat(4,1fr)}}
+  .amen{background:var(--ink);padding:clamp(18px,2.4vw,26px)}
+  .amen b{display:block;font-weight:600;font-size:1rem}
+  .amen small{color:#9fb3ac;font-size:.84rem}
+  .amen .mark{color:var(--sun);font-size:1.1rem;line-height:1;display:block;margin-bottom:.7rem}
+
+  /* ---------- Location ---------- */
+  .loc-grid{display:grid;gap:clamp(28px,4vw,52px);grid-template-columns:1fr}
+  @media(min-width:860px){.loc-grid{grid-template-columns:1fr 1fr;align-items:center}}
+  .loc-copy p{color:var(--ink-soft);margin-bottom:1em}
+  .loc-list{list-style:none;margin-top:1.4rem}
+  .loc-list li{display:flex;gap:1rem;padding:.7em 0;border-top:1px solid var(--line);font-size:.97rem}
+  .loc-list li b{font-weight:600;min-width:5.5ch;color:var(--moss);font-variant-numeric:tabular-nums}
+  .loc-media .ph{height:100%;min-height:300px;border-radius:8px;
+    background:linear-gradient(170deg,#cdd7d3,#5e7a72 70%,#2f4a45)}
+
+  /* ---------- Contact ---------- */
+  #contact{background:var(--paper);border-top:1px solid var(--line)}
+  .contact-grid{display:grid;gap:clamp(28px,5vw,60px);grid-template-columns:1fr}
+  @media(min-width:860px){.contact-grid{grid-template-columns:.9fr 1.1fr}}
+  .contact-intro h2{font-family:var(--display);font-weight:400;font-size:clamp(2rem,4vw,3.1rem);line-height:1.05;letter-spacing:-.01em;margin:.4rem 0 1rem}
+  .contact-intro p{color:var(--ink-soft);max-width:38ch;margin-bottom:1.4rem}
+  .contact-meta{margin-top:2rem}
+  .contact-meta a{font-weight:600;color:var(--ink);border-bottom:1px solid var(--sun)}
+  .contact-meta div{margin-bottom:.6rem;font-size:.97rem;color:var(--ink-soft)}
+
+  form{display:grid;gap:18px}
+  .field{display:flex;flex-direction:column;gap:.5rem}
+  .field label{font-size:.82rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft)}
+  .field .req{color:var(--sun-deep)}
+  .field input,.field textarea{
+    font-family:var(--body);font-size:1rem;color:var(--ink);
+    background:var(--bg);
+    border:1px solid var(--line);border-radius:8px;
+    padding:.85em .95em;width:100%;
+    transition:border-color .2s, box-shadow .2s;
+  }
+  .field textarea{min-height:140px;resize:vertical;line-height:1.55}
+  .field input:focus,.field textarea:focus{
+    outline:none;border-color:var(--moss);
+    box-shadow:0 0 0 3px rgba(92,122,115,.18);
+  }
+  .field input::placeholder,.field textarea::placeholder{color:#9aa79f}
+  .field.error input,.field.error textarea{border-color:#c0492b;box-shadow:0 0 0 3px rgba(192,73,43,.14)}
+  .err-msg{font-size:.82rem;color:#c0492b;min-height:0;display:none}
+  .field.error .err-msg{display:block}
+  .form-row{display:grid;gap:18px;grid-template-columns:1fr}
+  @media(min-width:560px){.form-row{grid-template-columns:1fr 1fr}}
+  form .btn{justify-content:center;font-size:1rem;padding:.85em 1.3em;margin-top:.4rem}
+  .form-note{font-size:.82rem;color:var(--moss)}
+
+  .form-success{
+    display:none;
+    background:var(--bg);border:1px solid var(--moss);border-radius:10px;
+    padding:clamp(28px,4vw,40px);text-align:center;
+  }
+  .form-success.show{display:block}
+  .form-success .mark{font-family:var(--display);font-size:2rem;color:var(--moss)}
+  .form-success h3{font-family:var(--display);font-weight:400;font-size:1.5rem;margin:.4rem 0 .5rem}
+  .form-success p{color:var(--ink-soft)}
+
+  /* ---------- Footer ---------- */
+  footer{padding:clamp(40px,6vw,64px) 0;border-top:1px solid var(--line)}
+  .foot{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center}
+  .foot .brand{font-size:1.3rem}
+  .foot small{color:var(--moss);font-size:.85rem}
+  .foot-links{display:flex;gap:22px;font-size:.9rem;color:var(--ink-soft)}
+
+  /* ---------- Motion ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap nav">
+    <!-- [EDIT] Your property name -->
+    <a href="#top" class="brand">Valo <span>Joensuu</span></a>
+    <div class="nav-links">
+      <a class="link" href="#gallery">Gallery</a>
+      <a class="link" href="#the-space">The space</a>
+      <a class="link" href="#location">Location</a>
+      <a class="btn sun nav-cta" href="#contact">Get in touch</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" style="padding:0">
+    <div class="hero-text reveal in">
+      <span class="eyebrow">Joensuu · North Karelia, Finland</span>
+      <!-- [EDIT] Headline -->
+      <h1>A quiet apartment<br>where the lake<br>keeps the <em>light</em>.</h1>
+      <p class="hero-lede">A bright two-room home a few steps from the water — a private sauna, a proper kitchen, fast Wi-Fi, and long Nordic evenings that don't seem to end.</p>
+      <div class="hero-actions">
+        <a class="btn sun" href="#contact">Get in touch</a>
+        <a class="btn ghost" href="#gallery">See the space</a>
+      </div>
+      <div class="facts">
+        <div class="fact"><b>4</b><small>Guests</small></div>
+        <div class="fact"><b>1</b><small>Bedroom</small></div>
+        <div class="fact"><b>1</b><small>Bath</small></div>
+        <div class="fact"><b>45</b><small>m²</small></div>
+        <div class="fact"><b>Yes</b><small>Sauna</small></div>
+      </div>
+    </div>
+    <!-- [EDIT] Replace this whole <div class="hero-media"> block with: <img src="your-photo.jpg" alt="..."> -->
+    <div class="hero-media"><div class="ph"></div></div>
+  </section>
+
+  <!-- ===================== GALLERY ===================== -->
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">A look around</span>
+        <h2>Every room faces the morning.</h2>
+      </div>
+      <!-- [EDIT] Replace each <div class="ph"></div> with <img src="..." alt="..."> -->
+      <div class="gallery-grid reveal">
+        <figure class="g-tall"><div class="ph"></div></figure>
+        <figure class="g-wide g2"><div class="ph"></div></figure>
+        <figure class="g3"><div class="ph"></div></figure>
+        <figure class="g4"><div class="ph"></div></figure>
+        <figure class="g-wide g5"><div class="ph"></div></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== THE SPACE ===================== -->
+  <section id="the-space">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">The space</span>
+        <h2>Small enough to feel like yours by the second morning.</h2>
+      </div>
+      <div class="space-grid">
+        <div class="space-copy reveal">
+          <!-- [EDIT] Describe your apartment -->
+          <p>The apartment sits on a calm street one block from the river, on the second floor of a low timber-and-brick building typical of the neighbourhood. Big windows face east, so the room fills with light early and stays warm through the afternoon.</p>
+          <p>The living space opens onto a compact kitchen with everything you'd actually cook with — a real oven, good knives, a stovetop espresso pot. The bedroom is quiet and dark when you want it to be, with blackout curtains for the bright summer nights and extra blankets for winter.</p>
+          <p>And then there's the sauna: small, private, and exactly the right thing after a day on the water or a walk in the snow. Heat it in twenty minutes, step out, and let the lake air do the rest.</p>
+        </div>
+        <aside class="pull reveal">
+          <h3>From the host</h3>
+          <!-- [EDIT] Your nightly rate, or remove the price block entirely -->
+          <div class="price">€95 <small>/ night</small></div>
+          <ul>
+            <li><span>Minimum stay</span><span>2 nights</span></li>
+            <li><span>Check-in</span><span>From 15:00 · self</span></li>
+            <li><span>Check-out</span><span>By 11:00</span></li>
+            <li><span>Cleaning fee</span><span>€30</span></li>
+            <li><span>Cancellation</span><span>Free · 7 days</span></li>
+          </ul>
+          <a class="btn" href="#contact">Check availability</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== AMENITIES ===================== -->
+  <section id="amenities">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">What's included</span>
+        <h2>Everything for a few days, or a few weeks.</h2>
+      </div>
+      <!-- [EDIT] Your amenities -->
+      <div class="amen-grid reveal">
+        <div class="amen"><span class="mark">✦</span><b>Private sauna</b><small>Wood-panelled, electric</small></div>
+        <div class="amen"><span class="mark">✦</span><b>Fast Wi-Fi</b><small>300 Mbps · desk</small></div>
+        <div class="amen"><span class="mark">✦</span><b>Full kitchen</b><small>Oven, dishwasher</small></div>
+        <div class="amen"><span class="mark">✦</span><b>Lake view</b><small>From the living room</small></div>
+        <div class="amen"><span class="mark">✦</span><b>Self check-in</b><small>Smart lock</small></div>
+        <div class="amen"><span class="mark">✦</span><b>Washer</b><small>In the apartment</small></div>
+        <div class="amen"><span class="mark">✦</span><b>Free parking</b><small>One space</small></div>
+        <div class="amen"><span class="mark">✦</span><b>Bicycle</b><small>For two</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LOCATION ===================== -->
+  <section id="location">
+    <div class="wrap">
+      <div class="loc-grid">
+        <div class="loc-copy reveal">
+          <span class="eyebrow">The neighbourhood</span>
+          <div class="section-head" style="margin-bottom:1.2rem">
+            <h2>Walk to almost everything.</h2>
+          </div>
+          <!-- [EDIT] Describe the area -->
+          <p>You're a few minutes' walk from the market square, the riverside path, and a handful of good cafés. The forest trails start where the streets end, and the train station is close enough to leave the car behind.</p>
+          <ul class="loc-list">
+            <li><b>2 min</b><span>Riverside walking path</span></li>
+            <li><b>6 min</b><span>Market square &amp; cafés</span></li>
+            <li><b>10 min</b><span>Train &amp; bus station</span></li>
+            <li><b>15 min</b><span>Forest trailhead</span></li>
+          </ul>
+        </div>
+        <!-- [EDIT] Replace with a map embed or a photo of the surroundings -->
+        <div class="loc-media reveal"><div class="ph"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact">
+    <div class="wrap">
+      <hr class="horizon reveal" style="max-width:120px;margin-bottom:2.4rem">
+      <div class="contact-grid">
+        <div class="contact-intro reveal">
+          <span class="eyebrow">Get in touch</span>
+          <h2>Tell me about your stay.</h2>
+          <p>Dates, questions, anything special you need — send a note and I'll get back to you, usually the same day.</p>
+          <div class="contact-meta">
+            <!-- [EDIT] Your contact details (optional) -->
+            <div>Or reach me directly:</div>
+            <div><a href="mailto:hello@example.com">hello@example.com</a></div>
+            <div>Helsinki time (EET) · replies within a day</div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" />
+                <span class="err-msg"></span>
+              </div>
+              <div class="field">
+                <label for="email">Email <span class="req">*</span></label>
+                <input type="email" id="email" name="email" placeholder="you@email.com" autocomplete="email" required />
+                <span class="err-msg">Please enter a valid email so I can reply.</span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="message">Message <span class="req">*</span></label>
+              <textarea id="message" name="message" placeholder="Hi! I'm thinking about the week of… Is the apartment free? Anything I should know?" required></textarea>
+              <span class="err-msg">Please add a short message.</span>
+            </div>
+            <button type="submit" class="btn sun">Send message</button>
+            <p class="form-note">Your email is only used to reply to you.</p>
+          </form>
+
+          <div class="form-success" id="form-success" role="status" aria-live="polite">
+            <div class="mark">✦</div>
+            <h3>Message on its way</h3>
+            <p>Thanks — I've got your note and I'll get back to you shortly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a href="#top" class="brand">Valo <span>Joensuu</span></a>
+      <div><small>A lakeside apartment in North Karelia.</small></div>
+    </div>
+    <div class="foot-links">
+      <a href="#gallery">Gallery</a>
+      <a href="#the-space">The space</a>
+      <a href="#location">Location</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   CONTACT FORM
+   ------------------------------------------------------------
+   By default this validates input and shows a success message
+   WITHOUT a backend (good for previewing).
+
+   To actually RECEIVE messages, set FORM_ENDPOINT below to a
+   form-handling URL. Easiest options (no server code):
+     • Web3Forms  (https://web3forms.com)  — free, paste access key URL
+     • Formspree  (https://formspree.io)
+   Or, on Cloudflare Pages, point it at your own Pages Function
+   (e.g. "/api/contact"). See the notes I sent with this file.
+   ============================================================ */
+const FORM_ENDPOINT = ""; // <-- leave "" to simulate, or paste your endpoint URL
+
+(function(){
+  const form = document.getElementById('contact-form');
+  const success = document.getElementById('form-success');
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function setError(field, on){
+    field.closest('.field').classList.toggle('error', on);
+  }
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    const email = form.email;
+    const message = form.message;
+    let ok = true;
+
+    if(!emailRe.test(email.value.trim())){ setError(email, true); ok = false; }
+    else setError(email, false);
+
+    if(message.value.trim().length < 2){ setError(message, true); ok = false; }
+    else setError(message, false);
+
+    if(!ok){ form.querySelector('.field.error input, .field.error textarea').focus(); return; }
+
+    const btn = form.querySelector('button[type=submit]');
+    const original = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Sending…';
+
+    try {
+      if(FORM_ENDPOINT){
+        const res = await fetch(FORM_ENDPOINT, {
+          method:'POST',
+          headers:{'Accept':'application/json'},
+          body:new FormData(form)
+        });
+        if(!res.ok) throw new Error('Request failed');
+      } else {
+        await new Promise(r => setTimeout(r, 600)); // simulate for preview
+      }
+      form.style.display = 'none';
+      success.classList.add('show');
+      success.scrollIntoView({behavior:'smooth', block:'center'});
+    } catch(err){
+      btn.disabled = false; btn.textContent = original;
+      alert('Sorry, something went wrong sending your message. Please email me directly.');
+    }
+  });
+
+  /* Scroll reveals */
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+</body>
+</html>
