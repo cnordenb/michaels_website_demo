@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Valo — An apartment in Itäharju, Turku</title>
+<title>Metsä — An apartment in Itäharju, Turku</title>
 <meta name="description" content="A bright apartment in Itäharju, eastern Turku — steps from Kupittaa Park, a short ride from the old town and the Aura River. Fast Wi-Fi and the long Nordic light. Get in touch to book your stay." />
 
 <!-- ============================================================
@@ -152,6 +152,58 @@
   .fact{display:flex;flex-direction:column;padding:4px 0}
   .fact b{font-family:var(--display);font-weight:400;font-size:1.5rem;line-height:1}
   .fact small{font-size:.72rem;text-transform:uppercase;letter-spacing:.13em;color:var(--moss);margin-top:.45em;font-weight:600}
+
+  /* Hero / gallery / location imagery */
+  .hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+  .gallery-grid figure img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .6s cubic-bezier(.2,.7,.2,1);
+  }
+  .gallery-grid figure:hover img{transform:scale(1.04)}
+  .loc-media iframe{
+    display:block;width:100%;height:100%;min-height:320px;
+    border:0;border-radius:8px;
+  }
+  .gallery-grid figure{cursor:zoom-in}
+
+  /* ---------- Lightbox ---------- */
+  .lightbox{
+    position:fixed;inset:0;z-index:100;
+    display:none;align-items:center;justify-content:center;
+    padding:clamp(16px,4vw,48px);
+    background:rgba(11,17,14,.93);
+    -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);
+  }
+  .lightbox.open{display:flex}
+  .lightbox img{
+    max-width:100%;max-height:82vh;width:auto;height:auto;
+    object-fit:contain;border-radius:8px;
+    box-shadow:0 24px 70px rgba(0,0,0,.55);
+  }
+  .lb-btn{
+    position:absolute;z-index:2;
+    width:48px;height:48px;border-radius:999px;
+    background:rgba(255,255,255,.12);color:#fff;
+    border:1px solid rgba(255,255,255,.28);
+    font-size:1.5rem;line-height:1;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .lb-btn:hover{background:rgba(255,255,255,.24)}
+  .lb-close{top:clamp(14px,3vw,26px);right:clamp(14px,3vw,26px)}
+  .lb-prev{left:clamp(10px,2vw,26px);top:50%;transform:translateY(-50%)}
+  .lb-next{right:clamp(10px,2vw,26px);top:50%;transform:translateY(-50%)}
+  .lb-prev:hover{transform:translateY(-50%) scale(1.06)}
+  .lb-next:hover{transform:translateY(-50%) scale(1.06)}
+  .lb-meta{
+    position:absolute;bottom:clamp(14px,3vw,24px);left:50%;transform:translateX(-50%);
+    display:flex;gap:1ch;align-items:baseline;justify-content:center;flex-wrap:wrap;
+    max-width:80%;text-align:center;color:rgba(255,255,255,.8);font-size:.85rem;
+  }
+  .lb-meta .lb-count{color:rgba(255,255,255,.55);letter-spacing:.08em;font-variant-numeric:tabular-nums}
+  @media(prefers-reduced-motion:reduce){
+    .lb-btn,.lb-prev:hover,.lb-next:hover{transition:none}
+  }
 
   /* Image placeholder — REPLACE the .ph divs with <img> tags */
   .hero-media{position:relative;min-height:340px}
@@ -314,7 +366,7 @@
 <header>
   <nav class="wrap nav">
     <!-- [EDIT] Your property name -->
-    <a href="#top" class="brand">Valo <span>Turku</span></a>
+    <a href="#top" class="brand">Metsä <span>Turku</span></a>
     <div class="nav-links">
       <a class="link" href="#gallery">Gallery</a>
       <a class="link" href="#the-space">The space</a>
@@ -345,8 +397,9 @@
         <div class="fact"><b>Yes</b><small>Lift</small></div>
       </div>
     </div>
-    <!-- [EDIT] Replace this whole <div class="hero-media"> block with: <img src="your-photo.jpg" alt="..."> -->
-    <div class="hero-media"><div class="ph"></div></div>
+    <div class="hero-media">
+      <img src="images/IMG_20260617_105612801.jpg" alt="Bright corner of the apartment — a round dining table for two by a sunlit window full of plants." loading="eager" />
+    </div>
   </section>
 
   <!-- ===================== GALLERY ===================== -->
@@ -356,13 +409,12 @@
         <span class="eyebrow">A look around</span>
         <h2>Every room faces the morning.</h2>
       </div>
-      <!-- [EDIT] Replace each <div class="ph"></div> with <img src="..." alt="..."> -->
       <div class="gallery-grid reveal">
-        <figure class="g-tall"><div class="ph"></div></figure>
-        <figure class="g-wide g2"><div class="ph"></div></figure>
-        <figure class="g3"><div class="ph"></div></figure>
-        <figure class="g4"><div class="ph"></div></figure>
-        <figure class="g-wide g5"><div class="ph"></div></figure>
+        <figure class="g-tall"><img src="images/IMG_20260617_105730918.jpg" alt="Two reading armchairs and a knitted pouf beside a plant-filled window." loading="lazy" /></figure>
+        <figure class="g-wide g2"><img src="images/IMG_20260617_105603175.jpg" alt="Kitchen counter with coffee maker, kettle and herbs on a dark stone worktop." loading="lazy" /></figure>
+        <figure class="g3"><img src="images/IMG_20260617_105642078.jpg" alt="The bedroom — a made bed, white wardrobes and a window onto greenery." loading="lazy" /></figure>
+        <figure class="g4"><img src="images/IMG_20260617_105734230.jpg" alt="Living room media unit with the television and a cluster of houseplants." loading="lazy" /></figure>
+        <figure class="g-wide g5"><img src="images/IMG_20260617_105749074.jpg" alt="The glassed-in balcony looking out over the green courtyard and lawn." loading="lazy" /></figure>
       </div>
     </div>
   </section>
@@ -437,8 +489,16 @@
             <li><b>&lt;2 h</b><span>Helsinki, by train</span></li>
           </ul>
         </div>
-        <!-- [EDIT] Replace with a map embed or a photo of the surroundings -->
-        <div class="loc-media reveal"><div class="ph"></div></div>
+        <!-- [EDIT] Map of the neighbourhood. To re-centre, change the q= place in the URL
+             (a place name or "lat,lng"), or paste a custom embed from Google Maps → Share → Embed. -->
+        <div class="loc-media reveal">
+          <iframe
+            title="Map of Itäharju, Turku"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1967.7006529096755!2d22.32694617781102!3d60.45015717517647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x468c77590bcdadf9%3A0x2bbf1922c1e8316c!2sJaanintie%2034%2C%2020540%20Turku!5e0!3m2!1sen!2sfi!4v1782203184932!5m2!1sen!2sfi"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
       </div>
     </div>
   </section>
@@ -498,7 +558,7 @@
 <footer>
   <div class="wrap foot">
     <div>
-      <a href="#top" class="brand">Valo <span>Turku</span></a>
+      <a href="#top" class="brand">Metsä <span>Turku</span></a>
       <div><small>An apartment in Itäharju, Turku.</small></div>
     </div>
     <div class="foot-links">
@@ -509,6 +569,15 @@
     </div>
   </div>
 </footer>
+
+<!-- Gallery lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-btn lb-close" id="lb-close" type="button" aria-label="Close viewer">✕</button>
+  <button class="lb-btn lb-prev" id="lb-prev" type="button" aria-label="Previous photo">‹</button>
+  <img id="lb-img" alt="" />
+  <button class="lb-btn lb-next" id="lb-next" type="button" aria-label="Next photo">›</button>
+  <div class="lb-meta"><span class="lb-count" id="lb-count"></span><span id="lb-cap"></span></div>
+</div>
 
 <script>
 /* ============================================================
@@ -578,6 +647,66 @@ const FORM_ENDPOINT = ""; // <-- leave "" to simulate, or paste your endpoint UR
     entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
   }, {threshold:0.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+
+/* ============================================================
+   GALLERY LIGHTBOX
+   Click (or press Enter/Space on) any gallery photo to open it
+   full-screen. Browse with the arrows / ← → keys, close with ✕,
+   the backdrop, or Esc.
+   ============================================================ */
+(function(){
+  const figs = Array.from(document.querySelectorAll('.gallery-grid figure'));
+  if(!figs.length) return;
+  const imgs   = figs.map(f => f.querySelector('img'));
+  const lb     = document.getElementById('lightbox');
+  const lbImg  = document.getElementById('lb-img');
+  const lbCap  = document.getElementById('lb-cap');
+  const lbCount= document.getElementById('lb-count');
+  let idx = 0, lastFocus = null;
+
+  function show(i){
+    idx = (i + imgs.length) % imgs.length;
+    const src = imgs[idx];
+    lbImg.src = src.currentSrc || src.src;
+    lbImg.alt = src.alt || '';
+    lbCap.textContent = src.alt || '';
+    lbCount.textContent = (idx + 1) + ' / ' + imgs.length;
+  }
+  function open(i){
+    lastFocus = document.activeElement;
+    show(i);
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('lb-next').focus();
+  }
+  function close(){
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    lbImg.removeAttribute('src');
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  figs.forEach((f,i)=>{
+    f.setAttribute('role','button');
+    f.setAttribute('tabindex','0');
+    f.setAttribute('aria-label', 'View photo: ' + (imgs[i].alt || ('image ' + (i+1))));
+    f.addEventListener('click', ()=>open(i));
+    f.addEventListener('keydown', e=>{
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); open(i); }
+    });
+  });
+
+  document.getElementById('lb-close').addEventListener('click', close);
+  document.getElementById('lb-prev').addEventListener('click', ()=>show(idx - 1));
+  document.getElementById('lb-next').addEventListener('click', ()=>show(idx + 1));
+  lb.addEventListener('click', e=>{ if(e.target === lb) close(); });
+  document.addEventListener('keydown', e=>{
+    if(!lb.classList.contains('open')) return;
+    if(e.key === 'Escape')      close();
+    else if(e.key === 'ArrowLeft')  show(idx - 1);
+    else if(e.key === 'ArrowRight') show(idx + 1);
+  });
 })();
 </script>
 </body>
